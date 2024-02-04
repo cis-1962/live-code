@@ -1,0 +1,15 @@
+#root {
+  position: relative;
+  height: 30rem;
+  width: 30rem;
+  background-color: grey;
+  margin-top: 10rem;
+  /* overflow-y: scroll; */
+}
+
+#root div {
+  padding: 1rem;
+  background-color: black;
+  color: white;
+  position: absolute;
+}
