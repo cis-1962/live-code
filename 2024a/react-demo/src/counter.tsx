@@ -4,7 +4,7 @@ export default function Counter() {
   const [counter, setCounter] = useState(0);
 
   return (
-    <>
+    <div className="p-4 ring-1 ring-gray-400 inline-flex m-1 rounded-lg shadow-lg flex-col">
       <p>hello guys! Counter is at {counter}</p>
       <button
         onClick={() => {
@@ -13,7 +13,7 @@ export default function Counter() {
       >
         Increase
       </button>
-    </>
+    </div>
   );
 }
 
