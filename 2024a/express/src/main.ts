@@ -1,10 +1,16 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieSession from 'cookie-session';
+import AuthRouter from './routes/auth';
+import mongoose from 'mongoose';
 
 // read environment variables from .env file
 dotenv.config();
 const PORT = process.env.PORT ?? 8000;
+
+const MONGODB_URI =
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/express';
+mongoose.connect(MONGODB_URI, {});
 
 const app = express();
 app.use(express.json());
@@ -27,21 +33,7 @@ app.get('/hello', (req, res) => {
   res.status(200).send('hello!');
 });
 
-app.post('/login', (req, res) => {
-  const { username, password } = req.body as {
-    username: string;
-    password: string;
-  };
-
-  if (!username) {
-    res.status(400).send('Please provide a username!');
-  }
-
-  // db logic... make sure user is real and correct password
-
-  req.session!.user = username;
-  res.status(200).send('OK!');
-});
+app.use('/auth', AuthRouter);
 
 // listen
 app.listen(PORT, () => {
