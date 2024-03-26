@@ -1,6 +1,6 @@
 import express from 'express';
 import z from 'zod';
-import { createUser } from '../../lib/auth';
+import { createUser } from '../lib/auth';
 
 const AuthRouter = express.Router();
 
